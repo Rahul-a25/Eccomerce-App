@@ -58,7 +58,7 @@ const Product = () => {
 </Card> 
                  )
                })
-            ): <h1> No Product </h1>
+            ): <h1 style={{textAlign:"center",marginTop:"300px",color:"red",fontSize:"50px",boxShadow:"0px 0px 10px black",width:"90%",margin:"300px auto"}}> Please Wait.... </h1>
         }
         </Box>  
     </Box>
