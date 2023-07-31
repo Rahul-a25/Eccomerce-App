@@ -11,3 +11,20 @@
     display:  grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+@media screen and (max-width: 600px) {
+    .container {
+      display: flex;
+      width: 600px;
+      border: 2px solid red;
+      height: 100%;
+      flex-direction: column;
+    }
+    .card{
+        padding: 10px;
+        margin:20px auto;
+        width: 600px;
+        height: 400px;
+       
+        
+    }
+  }

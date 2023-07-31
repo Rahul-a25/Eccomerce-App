@@ -7,7 +7,7 @@ const Navbar = () => {
         <>
             <Box className='Nav'>
                 <Box className='name'>
-                    <Link >Rahul Arora</Link>
+                    <Link >My Mart</Link>
                 </Box>
                 <Box className='mid'>
                     <Link to='/'>Home</Link>
