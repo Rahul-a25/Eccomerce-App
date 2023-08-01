@@ -63,6 +63,12 @@ const MyReducer=(state=initial,action)=>{
               })
             }
             break;
+            case 'detailcart':
+              state={
+                ...state,
+                CartData:[...state.CartData,action.payload]
+              }
+              break;
     }
   return state
 }

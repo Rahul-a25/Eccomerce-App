@@ -8,7 +8,7 @@ import ProductDetail from './component/ProductDetail';
 import Services from './component/Services';
 function App() {
   return (
-    <div style={{backgroundColor:"#48dbfb"}} className="App">
+    <div className="App">
       
       <Routes>
         <Route path='/' element={<Home/>}/>

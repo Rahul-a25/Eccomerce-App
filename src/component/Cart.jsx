@@ -16,7 +16,7 @@ const Cart = () => {
                     data.length > 0 ? (
                         data.map((e) => {
                             return (
-                                <Box style={{ display:"flex",justifyContent:"space-between",alignContent:"center", width: "1000px", padding: "5px", border: "2px solid red", margin: "40px auto" }}>
+                                <Box key={e.id} style={{ display:"flex",justifyContent:"space-between",alignContent:"center", width: "1000px", padding: "5px", border: "2px solid red", margin: "40px auto" }}>
                                     <Image
                                         style={{ backgroundColor: "black" }}
                                         boxSize='50px'

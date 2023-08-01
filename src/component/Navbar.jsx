@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react'
+import { Box,Input } from '@chakra-ui/react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Css/navbar.css'
@@ -7,15 +7,16 @@ const Navbar = () => {
         <>
             <Box className='Nav'>
                 <Box className='name'>
-                    <Link >My Mart</Link>
+                    <Link className='link' >My Mart</Link>
                 </Box>
                 <Box className='mid'>
-                    <Link to='/'>Home</Link>
-                    <Link to='/product'>Product</Link>
-                    <Link to='/services'>Services</Link>
+                    <Link className='link' to='/'>Home</Link>
+                    <Link className='link' to='/product'>Product</Link>
+                    <Link className='link' to='/services'>Services</Link>
+                    <Input className='input' placeholder='medium size' size='md' />
                     </Box>
                 <Box className='last'>
-                    <Link to='/cart'>Cart</Link>
+                    <Link className='link' to='/cart'>Cart</Link>
                 </Box>
             </Box>
         </>

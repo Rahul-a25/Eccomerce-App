@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ApiData from '../Redux/Action/ApiDataAction'
-import { Button, Box, Card, Image,Divider,ButtonGroup, CardFooter} from '@chakra-ui/react'
+import { Button, Box, Card,Text, Image,ButtonGroup, CardFooter} from '@chakra-ui/react'
 import './Css/product.css'
 import FilterData from '../Redux/Action/FilterData'
 import ProductButton from './ProductButton'
@@ -38,15 +38,19 @@ const Product = () => {
                     <Card key={e.id} className='card' maxW={250} style={{boxShadow:"0px 0px 10px gray"}} >
   
     <Image
-      style={{width:'200px',margin:"5px auto"}}
+      className='cardimage'
       src={e.image}
       alt='No Image'
       borderRadius='lg'
     />
   
  
-  <CardFooter>
-    <ButtonGroup spacing='2'>
+  <Box  style={{display:"flex",flexDirection:"column",width:"100%"}}>
+  <Text style={{width:"200px",textAlign:"center"}} fontSize='xl' fontWeight={400}>{e.title.slice(0,15)}</Text>
+  <Text style={{width:"200px",textAlign:"center"}} fontSize='lg'  fontWeight={700}>${e.price}</Text>
+    {/* <Text fontSize='lg'>{e.description}</Text> */}
+    <ButtonGroup style={{margin:"0px auto"}} spacing='2'>
+    
       <Link to={`/productDetail/${e.id}`}><Button variant='solid' style={{backgroundColor:"#1dd1a1",color:"white"}}>
         Buy now
       </Button></Link>
@@ -54,7 +58,7 @@ const Product = () => {
         Add to cart
       </Button>
     </ButtonGroup>
-  </CardFooter>
+  </Box>
 </Card> 
                  )
                })

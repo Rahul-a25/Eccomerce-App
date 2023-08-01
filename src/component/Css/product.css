@@ -3,28 +3,57 @@
     justify-content: space-between;
     margin: 50px 70px;
 }
-
-.card{
-    margin: 20px auto;
-}
 .container {
     display:  grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-row-start: auto;
+    border: 2px solid red;
+
 }
-@media screen and (max-width: 600px) {
+
+.chakra-card{
+    margin: 20px auto;
+    width: 700px;
+    height: 380px;
+    padding: 10px;
+   
+
+}
+.cardimage{
+    height: 250px;
+    
+}
+
+
+@media screen and (max-width: 760px){
     .container {
       display: flex;
-      width: 600px;
+      width: 100%;
+      flex-direction: column;
       border: 2px solid red;
       height: 100%;
-      flex-direction: column;
+      background-color: brown;
     }
-    .card{
+    .css-13yg38p {
         padding: 10px;
-        margin:20px auto;
-        width: 600px;
-        height: 400px;
+        max-width: 500px;
+        
+        /* margin:20px auto; */
+        height: 350px;
+        
        
         
+    }
+    .chakra-image{
+       
+        border: 2px solid black;
+        height: 250px;
+    }
+    .chakra-card_footer{
+        margin: 0px auto;
+        padding: none;
+    }
+    .chakra-button__group{
+        padding: 1.1 rem;
     }
   }
