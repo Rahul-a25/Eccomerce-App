@@ -1,13 +1,19 @@
 .button{
     display: flex;
-    justify-content: space-between;
-    margin: 50px 70px;
+      margin-left: 150px;
+      margin-bottom: 30px;
+    /* margin: 50px 70px; */
+}
+/* button wala class */
+.samebtn {
+     margin-left: 115px;
+
 }
 .container {
     display:  grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-row-start: auto;
-    border: 2px solid red;
+    width: 700px;
 
 }
 
@@ -15,7 +21,7 @@
     margin: 20px auto;
     width: 700px;
     height: 380px;
-    padding: 10px;
+    padding: 20px;
    
 
 }

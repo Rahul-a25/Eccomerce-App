@@ -6,37 +6,44 @@ import Jewelery from '../Redux/Action/Jewelary'
 import WomanCloth from '../Redux/Action/WomanCloth'
 import { Button, Box} from '@chakra-ui/react'
 import {  useDispatch,useSelector } from 'react-redux'
+import { BiCart } from "react-icons/bi";
+import {  GiClothes,GiLoincloth,GiGoldBar} from "react-icons/gi";
+import { TbBrandElectronicArts } from "react-icons/tb";
 const ProductButton = () => {
     const dispatch=useDispatch()
     const FilData=useSelector((storeData)=>{
       return storeData.FilterData
   })
+ 
   return (
     <>
       <Box className='button'>
-       <Button onClick={()=>{
+       <Button variant='outline' rightIcon={<BiCart />}  className='same' onClick={()=>{
       dispatch(AllData(FilData))
-  }} colorScheme='teal' size='md'>
+  }} colorScheme='teal' size='lg'>
     All
   </Button>
-  <Button onClick={()=>{
+  <Button rightIcon={<GiClothes  />}  variant='outline'  className='samebtn'  onClick={()=>{
     dispatch(MenCloth(FilData))
-  }} colorScheme='teal' size='md'>
+  }} colorScheme='teal' size='lg'>
     Men's Cloth
   </Button>
-  <Button onClick={()=>{
+ 
+  <Button rightIcon={< GiLoincloth/>} variant='outline'  className='samebtn' onClick={()=>{
       dispatch(WomanCloth(FilData))
-  }} colorScheme='teal' size='md'>
+  }} colorScheme='teal' size='lg'>
     Woman Cloth
   </Button>
-  <Button onClick={()=>{
+ 
+  <Button rightIcon={<  TbBrandElectronicArts/>}   variant='outline' className='samebtn'  onClick={()=>{
       dispatch(Electronic(FilData))
-  }} colorScheme='teal' size='md'>
+  }} colorScheme='teal' size='lg'>
     Electronic
   </Button>
-  <Button onClick={()=>{
+  
+  <Button rightIcon={<  GiGoldBar/>}  className='samebtn'  variant='outline' onClick={()=>{
       dispatch(Jewelery(FilData))
-  }}  colorScheme='teal' size='md'>
+  }}  colorScheme='teal' size='lg'>
      Jewelary
   </Button>
         </Box>   

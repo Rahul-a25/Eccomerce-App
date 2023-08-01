@@ -2,14 +2,16 @@ import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ApiData from '../Redux/Action/ApiDataAction'
-import { Button, Box, Card,Text, Image,ButtonGroup, CardFooter} from '@chakra-ui/react'
+import { Button,Input,Divider,AbsoluteCenter, Box, Card,Text, Image,ButtonGroup, CardFooter, Center} from '@chakra-ui/react'
 import './Css/product.css'
+import './Css/home.css'
 import FilterData from '../Redux/Action/FilterData'
 import ProductButton from './ProductButton'
 import CartData from '../Redux/Action/Cart'
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import ProductCarousel from './ProductCarousel'
+import Search from '../Redux/Action/Search'
 const Home = () => {
     const dispatch=useDispatch()
     useEffect(()=>{
@@ -24,17 +26,33 @@ const Home = () => {
     const Data=useSelector((storeData)=>{
       return storeData.ApiData
   })
+  const searchfn=(e)=>{
+    dispatch(Search(e.target.value))
+  }
   return (
     <>
     <Navbar/>
 
     {/* Carousel */}
    
-<ProductCarousel/>
+<ProductCarousel/> 
+{/* Teaxt wlaa Latest Product wala */}
+<Box position='relative' padding='10'>
+  <Divider />
+  <AbsoluteCenter bg='white' px='4'>
+  <Text style={{textAlign:"center",margin:"20px 0px "}} fontSize='4xl'>Letest Product</Text>
+  </AbsoluteCenter>
+</Box>
+
+
+
+
     {/* Button */}
-    <Box style={{height:"100%",marginTop:"100px"}} >
-        <Box>
-           <ProductButton/>
+     
+    <Box style={{height:"100%",marginTop:"50px"}} >
+        <Box >
+           <ProductButton/> 
+           <Input style={{width:"80%"}} onChange={(e)=>{searchfn(e)}}  className='input' placeholder='Search Your Product....' size='lg' />
         </Box>
         <Box className='container'>
         {

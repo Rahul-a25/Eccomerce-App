@@ -3,10 +3,15 @@ import { Button, Box,Text, Card, Image, Divider, ButtonGroup, CardFooter, Center
 import { useDispatch, useSelector } from 'react-redux'
 import RemoveCart from '../Redux/Action/RemoveCart'
 import Navbar from './Navbar'
+import Dec from '../Redux/Action/DecCount'
 const Cart = () => {
     const data = useSelector((storeData) => {
         return storeData.CartData
     })
+    const Cartfn=(e)=>{
+        dispatch(RemoveCart(e))
+        dispatch(Dec(1))
+    }
     const dispatch= useDispatch()
     return (
         <>
@@ -16,20 +21,21 @@ const Cart = () => {
                     data.length > 0 ? (
                         data.map((e) => {
                             return (
-                                <Box key={e.id} style={{ display:"flex",justifyContent:"space-between",alignContent:"center", width: "1000px", padding: "5px", border: "2px solid red", margin: "40px auto" }}>
+                                <Box key={e.id} style={{ display:"flex",justifyContent:"space-between",alignContent:"center", width: "1200px", padding: "5px", boxShadow:"0px 10px 10px #dfe4ea", margin: "40px auto" }}>
                                     <Image
-                                        style={{ backgroundColor: "black" }}
-                                        boxSize='50px'
+                                        style={{ backgroundColor: "black",marginLeft:"15px" }}
+                                        boxSize='100px'
                                         // objectFit='cover'
                                         src={e.image}
                                         alt='Dan Abramov'
 
                                     />
-                                    <Text>{e.title}</Text>
-                                    <Text>Rs.{e.price}</Text>
-                                    <Text>{e.rating.rate}</Text>
-                                    <Button onClick={()=>{
-                                        dispatch(RemoveCart(e))
+                                    <Text style={{marginTop:'30px',color:"rgb(149, 165, 166)"}} fontSize={30}>{e.title.slice(0,40)}</Text>
+                                    <Text style={{marginTop:'30px'}} fontSize={30} fontWeight={700}>${e.price}</Text>
+                                    <Text style={{marginTop:'30px'}} fontSize={30}>{e.rating.rate}</Text>
+                                    {/* dispatch(RemoveCart(e)) */}
+                                    <Button style={{marginTop:'30px',marginRight:"15px"}} onClick={()=>{
+                                        Cartfn(e)
                                     }}  colorScheme='blue'>Remove</Button>
                                 </Box>
                             )

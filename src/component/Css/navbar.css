@@ -1,8 +1,7 @@
 .Nav{
     display: flex;
-   
-   
     color: black; 
+    background-color:#dfe4ea;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
@@ -32,7 +31,17 @@
 }
 
 .last{
-    margin-right: 50px;
+    /* margin-right: 50px; */
+   
+    width: 200px;
+
+}
+.last .link {
+    margin: 0px auto;
+}
+.last .link button{
+    font-size: 25px;
+    width: 70px;
 }
 .link{
     font-size: 25px;

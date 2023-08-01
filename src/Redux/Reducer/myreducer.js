@@ -3,7 +3,8 @@
 const initial={
     ApiData:[],
     FilterData:[],
-    CartData:[]
+    CartData:[],
+    Count:0
 }
 const MyReducer=(state=initial,action)=>{
     switch (action.type){
@@ -69,6 +70,24 @@ const MyReducer=(state=initial,action)=>{
                 CartData:[...state.CartData,action.payload]
               }
               break;
+              case 'inc':
+                state={
+                  ...state,
+                  Count:state.Count+action.payload
+                }
+                break;
+                case 'dec':
+                state={
+                  ...state,
+                  Count:state.Count-action.payload
+                }
+                break;
+                case 'search':
+            state={
+              ...state,
+              ApiData:state.FilterData.filter((e)=>e.title.toLowerCase().includes(action.payload))
+            }
+            break;
     }
   return state
 }

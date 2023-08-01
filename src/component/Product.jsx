@@ -9,6 +9,7 @@ import ProductButton from './ProductButton'
 import CartData from '../Redux/Action/Cart'
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
+import Inc from '../Redux/Action/IncCount'
 const Product = () => {
     const dispatch=useDispatch()
     useEffect(()=>{
@@ -23,6 +24,10 @@ const Product = () => {
     const Data=useSelector((storeData)=>{
       return storeData.ApiData
   })
+  const CartFn=(e)=>{
+     dispatch(CartData(e))
+     dispatch(Inc(1))
+  }
   return (
     <>
     <Navbar/>
@@ -35,7 +40,7 @@ const Product = () => {
             Data.length>0?(
                Data.map((e,id)=>{
                  return (
-                    <Card key={e.id} className='card' maxW={250} style={{boxShadow:"0px 0px 10px gray"}} >
+                    <Card key={e.id} className='card' maxW={250} style={{boxShadow:"0px 0px 10px #dfe4ea"}} >
   
     <Image
       className='cardimage'
@@ -54,7 +59,8 @@ const Product = () => {
       <Link to={`/productDetail/${e.id}`}><Button variant='solid' style={{backgroundColor:"#1dd1a1",color:"white"}}>
         Buy now
       </Button></Link>
-      <Button onClick={()=>{dispatch(CartData(e))}} variant='solid' colorScheme='blue'>
+      {/* {dispatch(CartData(e))} */}
+      <Button onClick={()=>CartFn(e)} variant='solid' colorScheme='blue'>
         Add to cart
       </Button>
     </ButtonGroup>
