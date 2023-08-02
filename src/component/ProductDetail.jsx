@@ -3,11 +3,13 @@ import { Button, Box,Image,Text} from '@chakra-ui/react'
 import {FaStar} from "react-icons/fa";
 // import { AiOutlineStar } from "react-icons/ai";
 import './Css/detail.css'
+import './Css/home.css'
 import axios from 'axios'
 import { useParams,useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import DetailCartItem from '../Redux/Action/DetailCartItem'
 import Navbar from './Navbar'
+import CartData from '../Redux/Action/Cart';
+import Inc from '../Redux/Action/IncCount';
 const ProductDetail = () => {
   const navigate=useNavigate()
     const {id}=useParams()
@@ -21,7 +23,10 @@ const ProductDetail = () => {
  alert('error')
    })
     },[])
-
+const CartItem=(e)=>{
+   dispatch(CartData(e))
+   dispatch(Inc(1))
+}
     
   return (
     <>
@@ -38,14 +43,14 @@ const ProductDetail = () => {
             </Box>  
 
             <Box style={{marginTop:"50px"}} className='content'>
-                  <Text style={{fontSize:"50px",color:"#95a5a6"}}>{e.category.toUpperCase()}</Text>
-                  <Text fontWeight={300} style={{fontSize:"40px"}}>{e.title.slice(0,30)}</Text>
-                  <Text fontWeight={200}  style={{fontSize:"20px",marginTop:"20px"}}>{e.description.slice(0,338)}</Text>
-                  <Text style={{fontSize:"20px",marginTop:"20px",display:"flex"}}>< FaStar style={{color:"#fbc531",fontSize:"30px"}}/> &nbsp;&nbsp;&nbsp;&nbsp; <span style={{fontSize:"25px",fontWeight:"700px"}}>{e.rating.rate}</span></Text>
-                  <Text fontWeight={700}  style={{fontSize:"40px",marginTop:"20px"}}>${e.price}</Text>
+                  <Text className='font' style={{fontSize:"50px",color:"#95a5a6"}}>{e.category.toUpperCase()}</Text>
+                  <Text className='font' fontWeight={300} style={{fontSize:"40px"}}>{e.title.slice(0,30)}</Text>
+                  <Text className='font' fontWeight={200}  style={{fontSize:"20px",marginTop:"20px"}}>{e.description.slice(0,338)}</Text>
+                  <Text className='font' style={{fontSize:"20px",marginTop:"20px",display:"flex"}}>< FaStar style={{color:"#fbc531",fontSize:"30px"}}/> &nbsp;&nbsp;&nbsp;&nbsp; <span style={{fontSize:"25px",fontWeight:"700px"}}>{e.rating.rate}</span></Text>
+                  <Text className='font' fontWeight={700}  style={{fontSize:"40px",marginTop:"20px"}}>${e.price}</Text>
                   <Box>
-                  <Button  colorScheme='blue' onClick={()=>dispatch(DetailCartItem(e))} style={{fontSize:"20px",marginTop:"10px"}}>Add To Cart</Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <Button  colorScheme='blue' onClick={()=>navigate('/cart')} style={{fontSize:"20px",marginTop:"10px",backgroundColor:"#1dd1a1"}}>Go To Cart</Button>
+                  <Button className='font'  colorScheme='blue' onClick={()=>CartItem(e)} style={{fontSize:"20px",marginTop:"10px"}}>Add To Cart</Button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <Button  className='font' colorScheme='gray' onClick={()=>navigate('/cart')} style={{fontSize:"20px",marginTop:"10px"}}>Go To Cart</Button>
                   </Box>
             </Box> 
                 </>

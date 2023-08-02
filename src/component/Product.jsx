@@ -51,16 +51,16 @@ const Product = () => {
   
  
   <Box  style={{display:"flex",flexDirection:"column",width:"100%"}}>
-  <Text style={{width:"200px",textAlign:"center"}} fontSize='xl' fontWeight={400}>{e.title.slice(0,15)}</Text>
-  <Text style={{width:"200px",textAlign:"center"}} fontSize='lg'  fontWeight={700}>${e.price}</Text>
+  <Text className='font'  style={{width:"200px",textAlign:"center"}} fontSize='xl' fontWeight={400}>{e.title.slice(0,15)}</Text>
+  <Text className='font'  style={{width:"200px",textAlign:"center"}} fontSize='lg'  fontWeight={700}>${e.price}</Text>
     {/* <Text fontSize='lg'>{e.description}</Text> */}
     <ButtonGroup style={{margin:"0px auto"}} spacing='2'>
     
-      <Link to={`/productDetail/${e.id}`}><Button variant='solid' style={{backgroundColor:"#1dd1a1",color:"white"}}>
+      <Link to={`/productDetail/${e.id}`}><Button className='font'  variant='solid' color='' colorScheme='gray'>
         Buy now
       </Button></Link>
       {/* {dispatch(CartData(e))} */}
-      <Button onClick={()=>CartFn(e)} variant='solid' colorScheme='blue'>
+      <Button className='font'  onClick={()=>CartFn(e)} variant='solid' colorScheme='blue'>
         Add to cart
       </Button>
     </ButtonGroup>

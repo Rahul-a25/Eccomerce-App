@@ -1,9 +1,11 @@
 import React from 'react'
-import { Button, Box,Text, Card, Image, Divider, ButtonGroup, CardFooter, Center } from '@chakra-ui/react'
+import { Button, Box,Text,  Image,  } from '@chakra-ui/react'
 import { useDispatch, useSelector } from 'react-redux'
+import './Css/home.css'
 import RemoveCart from '../Redux/Action/RemoveCart'
 import Navbar from './Navbar'
 import Dec from '../Redux/Action/DecCount'
+import {FaStar} from "react-icons/fa";
 const Cart = () => {
     const data = useSelector((storeData) => {
         return storeData.CartData
@@ -30,18 +32,18 @@ const Cart = () => {
                                         alt='Dan Abramov'
 
                                     />
-                                    <Text style={{marginTop:'30px',color:"rgb(149, 165, 166)"}} fontSize={30}>{e.title.slice(0,40)}</Text>
-                                    <Text style={{marginTop:'30px'}} fontSize={30} fontWeight={700}>${e.price}</Text>
-                                    <Text style={{marginTop:'30px'}} fontSize={30}>{e.rating.rate}</Text>
+                                    <Text className='font' style={{marginTop:'30px',color:"rgb(149, 165, 166)"}} fontSize={30}>{e.title.slice(0,40)}</Text>
+                                    <Text className='font' style={{marginTop:'30px'}} fontSize={30} fontWeight={700}>${e.price}</Text>
+                                    <Text className='font' style={{marginTop:'30px',display:"flex"}} fontSize={30}><FaStar style={{color:'#fbc531',marginTop:"5px"}} />&nbsp;<span>{e.rating.rate}</span></Text>
                                     {/* dispatch(RemoveCart(e)) */}
-                                    <Button style={{marginTop:'30px',marginRight:"15px"}} onClick={()=>{
+                                    <Button className='font' style={{marginTop:'30px',marginRight:"15px"}} onClick={()=>{
                                         Cartfn(e)
-                                    }}  colorScheme='blue'>Remove</Button>
+                                    }}  colorScheme='red'>Remove</Button>
                                 </Box>
                             )
                         })
 
-                    ) : <h1 style={{textAlign:"center",marginTop:"300px",color:"red",fontSize:"60px",boxShadow:"0px 0px 10px red",width:"90%",margin:"300px auto"}}>No Data</h1>
+                    ) : <h1 className='font' style={{textAlign:"center",marginTop:"300px",color:"red",fontSize:"40px",boxShadow:"0px 0px 10px #dfe4ea",width:"90%",margin:"300px auto"}}>Empty Cart</h1>
                 }
 
             </Box>

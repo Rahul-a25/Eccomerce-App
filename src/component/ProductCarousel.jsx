@@ -1,5 +1,5 @@
 import React from 'react'
-
+import watch from './assest/watches.jpg'
 import Carousel from 'react-bootstrap/Carousel';
 import { Box, Image } from '@chakra-ui/react';
 // import ExampleCarouselImage from 'components/ExampleCarouselImage';
@@ -30,7 +30,7 @@ const ProductCarousel = () => {
                         <img 
                             style={{height:"500px"}}
                             className="d-block w-100"
-                            src="https://nationaljeweler.com/uploads/2ce76797e1caf0c6e7d0dd84a8f88204.jpg"
+                            src={watch}
                             alt="Second slide"
                         />
 
@@ -42,9 +42,19 @@ const ProductCarousel = () => {
                             src="https://images.unsplash.com/photo-1675455137349-399d41cfcd72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80"
                             alt="Third slide"
                         />
+                        
     
                     </Carousel.Item>
-                   
+                    <Carousel.Item>
+                        <img
+                             style={{height:"500px"}}
+                            className="d-block w-100"
+                            src="https://plus.unsplash.com/premium_photo-1678739395192-bfdd13322d34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80"
+                            alt="Third slide"
+                        />
+                        
+    
+                    </Carousel.Item>
                    
                 </Carousel>
             </Box>

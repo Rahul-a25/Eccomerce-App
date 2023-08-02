@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import ProductCarousel from './ProductCarousel'
 import Search from '../Redux/Action/Search'
+import Inc from '../Redux/Action/IncCount'
 const Home = () => {
     const dispatch=useDispatch()
     useEffect(()=>{
@@ -29,6 +30,10 @@ const Home = () => {
   const searchfn=(e)=>{
     dispatch(Search(e.target.value))
   }
+  const homefn=(e)=>{
+    dispatch(CartData(e))
+    dispatch(Inc(1))
+  }
   return (
     <>
     <Navbar/>
@@ -40,7 +45,7 @@ const Home = () => {
 <Box position='relative' padding='10'>
   <Divider />
   <AbsoluteCenter bg='white' px='4'>
-  <Text style={{textAlign:"center",margin:"20px 0px "}} fontSize='4xl'>Letest Product</Text>
+  <Text className='font' style={{textAlign:"center",margin:"20px 0px ",}} fontSize='4xl'>Letest Product</Text>
   </AbsoluteCenter>
 </Box>
 
@@ -59,7 +64,7 @@ const Home = () => {
             Data.length>0?(
                Data.map((e,id)=>{
                  return (
-                    <Card key={e.id} className='card' maxW={250} style={{boxShadow:"0px 0px 10px gray"}} >
+                    <Card key={e.id} className='card' maxW={250} style={{boxShadow:"0px 0px 10px #dfe4ea"}} >
   
     <Image
       className='cardimage'
@@ -70,15 +75,16 @@ const Home = () => {
   
  
   <Box  style={{display:"flex",flexDirection:"column",width:"100%"}}>
-  <Text style={{width:"200px",textAlign:"center"}} fontSize='xl' fontWeight={400}>{e.title.slice(0,15)}</Text>
-  <Text style={{width:"200px",textAlign:"center"}} fontSize='lg'  fontWeight={700}>${e.price}</Text>
+  <Text className='font'  style={{width:"200px",textAlign:"center"}} fontSize='xl' fontWeight={400}>{e.title.slice(0,15)}</Text>
+  <Text className='font'  style={{width:"200px",textAlign:"center"}} fontSize='lg'  fontWeight={700}>${e.price}</Text>
     {/* <Text fontSize='lg'>{e.description}</Text> */}
     <ButtonGroup style={{margin:"0px auto"}} spacing='2'>
     
-      <Link to={`/productDetail/${e.id}`}><Button variant='solid' style={{backgroundColor:"#1dd1a1",color:"white"}}>
+      <Link className='font'  to={`/productDetail/${e.id}`}><Button variant='solid' color='' colorScheme='gray' >
         Buy now
       </Button></Link>
-      <Button onClick={()=>{dispatch(CartData(e))}} variant='solid' colorScheme='blue'>
+      {/* dispatch(CartData(e)) */}
+      <Button className='font'  onClick={()=>{homefn(e)}} variant='solid' colorScheme='blue'>
         Add to cart
       </Button>
     </ButtonGroup>
@@ -86,7 +92,8 @@ const Home = () => {
 </Card> 
                  )
                })
-            ): <h1 style={{textAlign:"center",marginTop:"300px",color:"red",fontSize:"50px",boxShadow:"0px 0px 10px black",width:"90%",margin:"300px auto"}}> Please Wait.... </h1>
+
+            ): <h1 className='font'  style={{textAlign:"center",marginTop:"300px",color:"red",fontSize:"50px",boxShadow:"0px 0px 10px #dfe4ea ",width:"90%",margin:"300px auto"}}> Please Wait.... </h1>
         }
         </Box>  
     </Box>
