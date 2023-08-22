@@ -1,3 +1,4 @@
+import CartData from "../Action/Cart";
 
 
 const initial={
@@ -51,35 +52,85 @@ const MyReducer=(state=initial,action)=>{
             }
             break;
             case 'Cart':
-            state={
-              ...state,
-              CartData:[...state.CartData,action.payload]
+            //   const existingItem = state.Cart.find((item) => item.id === payload.id);
+            //   if (existingItem) {
+            //     return {
+            //       ...state,
+            //       Cart: state.Cart.map((item) =>
+            //         item.id === payload.id ? { ...item, qty: item.qty + 1 } : item
+            //       ),
+            //     };
+            //   } else {
+            //     return {
+            //       ...state,
+            //       Cart: [...state.Cart, { ...payload, qty: 1 }],
+            //     };
+            //   }
+            // }
+            const existingItem = state.CartData.find((item) => item.id === action.payload.id);
+            if(existingItem){
+              return{
+                ...state,
+                CartData:state.CartData.map((item) =>
+                        item.id === action.payload.id ? { ...item, qty: item.qty + 1 } : item),
+                 
+              }
+             
             }
+            else{
+              return{
+                ...state,
+                // updated
+               CartData: [...state.CartData, {...action.payload,qty:1}],
+               Count:state.Count+action.countval 
+              }
+          }
+            // state={
+            //   ...state,
+            //   // action.payload.filter((e)=>e.id!=action.payload.id)?
+            //   // [...state.CartData,action.payload]
+            //   CartData:[...state.CartData,action.payload]
+             
+            // }
             break;
             case 'RemoveItem':
-            state={
-              ...state,
-              CartData:state.CartData.filter((id)=>{
-                return action.payload!==id
-              })
+              const existingItem1 =state.CartData.find((item) => item.id === action.payload.id);
+              if(existingItem1.qty ===1){
+                  return {
+                      ...state,
+                      CartData: state.CartData.filter((item) => item.id !== action.payload.id),
+                      Count:state.Count-action.DecVal
+                    };
+                     
+              }
+              
+              else{
+                return  {
+                    ...state,
+                    CartData: state.CartData.map((item) =>
+                      item.id === action.payload.id ? { ...item, qty: item.qty - 1 } : item
+                    ),
+                   
+                  };
             }
-            break;
+            // state={
+            //   ...state,
+            //   CartData:state.CartData.filter((id)=>{
+            //     return action.payload!==id
+            //   }),
+            //   Count:state.Count-action.DecVal
+            // }
+            // break;
             case 'detailcart':
               state={
                 ...state,
-                CartData:[...state.CartData,action.payload]
+                CartData:[...state.CartData,action.payload],
               }
               break;
-              case 'inc':
-                state={
-                  ...state,
-                  Count:state.Count+action.payload
-                }
-                break;
                 case 'dec':
                 state={
                   ...state,
-                  Count:state.Count-action.payload
+                  
                 }
                 break;
                 case 'search':

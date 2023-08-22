@@ -13,7 +13,8 @@ const Navbar = () => {
     
     return (
         <>
-            <Box className='Nav'>
+            <Box className='Nav' >
+                <Box className='content' >
                 <Box className='name'>
                     <Link style={{display:"flex"}} className='link' ><img width={120} height={110} src={startmart} alt="" /></Link>
                 </Box>
@@ -28,6 +29,7 @@ const Navbar = () => {
                 <NavLink className='link' to='/cart'> <Button width={200} variant='outline'leftIcon={< BsCartFill />}> <span style={{fontSize:"20px"}}>{CountData}</span> </Button></NavLink>
                 
                   
+                </Box>
                 </Box>
             </Box>
         </>

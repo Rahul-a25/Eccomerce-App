@@ -1,7 +1,9 @@
-const CartData=(Data)=>{
+const CartData=(Data,Inc)=>{
     return{
         type:'Cart',
-        payload:Data
+        payload:Data,
+        countval:Inc
+
     }
 }
 export default CartData

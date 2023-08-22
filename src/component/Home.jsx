@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ApiData from '../Redux/Action/ApiDataAction'
-import { Button,Input,Divider,AbsoluteCenter, Box, Card,Text, Image,ButtonGroup, CardFooter, Center} from '@chakra-ui/react'
+import { Button,Input,Divider,AbsoluteCenter, Box, Card,Text, Image,ButtonGroup,} from '@chakra-ui/react'
 import './Css/product.css'
 import './Css/home.css'
 import FilterData from '../Redux/Action/FilterData'
@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import ProductCarousel from './ProductCarousel'
 import Search from '../Redux/Action/Search'
-import Inc from '../Redux/Action/IncCount'
 const Home = () => {
     const dispatch=useDispatch()
     useEffect(()=>{
@@ -31,8 +30,8 @@ const Home = () => {
     dispatch(Search(e.target.value))
   }
   const homefn=(e)=>{
-    dispatch(CartData(e))
-    dispatch(Inc(1))
+    dispatch(CartData(e,1))
+    // dispatch(CartData(1))
   }
   return (
     <>
@@ -55,9 +54,9 @@ const Home = () => {
     {/* Button */}
      
     <Box style={{height:"100%",marginTop:"50px"}} >
-        <Box >
+        <Box style={{width:"90%"}} >
            <ProductButton/> 
-           <Input style={{width:"80%"}} onChange={(e)=>{searchfn(e)}}  className='input' placeholder='Search Your Product....' size='lg' />
+           <Input style={{width:"89%"}} onChange={(e)=>{searchfn(e)}}  className='input' placeholder='Search Your Product....' size='lg' />
         </Box>
         <Box className='container'>
         {
@@ -93,7 +92,7 @@ const Home = () => {
                  )
                })
 
-            ): <h1 className='font'  style={{textAlign:"center",marginTop:"300px",color:"red",fontSize:"50px",boxShadow:"0px 0px 10px #dfe4ea ",width:"90%",margin:"300px auto"}}> Please Wait.... </h1>
+            ):<div style={{margin:"0px auto",width:"100%"}}> <h1 className='font'  style={{color:"red",fontSize:"50px",boxShadow:"0px 0px 10px #dfe4ea ",margin:"300px auto",marginTop:"200px"}}> Please Wait.... </h1></div>
         }
         </Box>  
     </Box>

@@ -4,17 +4,24 @@ import { useDispatch, useSelector } from 'react-redux'
 import './Css/home.css'
 import RemoveCart from '../Redux/Action/RemoveCart'
 import Navbar from './Navbar'
-import Dec from '../Redux/Action/DecCount'
+
 import {FaStar} from "react-icons/fa";
+import CartData from '../Redux/Action/Cart'
 const Cart = () => {
     const data = useSelector((storeData) => {
         return storeData.CartData
     })
     const Cartfn=(e)=>{
-        dispatch(RemoveCart(e))
-        dispatch(Dec(1))
+        dispatch(RemoveCart(e,1))
+        // dispatch(Dec(1))
     }
     const dispatch= useDispatch()
+    const priceAdd=(item)=>{
+       dispatch(CartData(item))
+    }
+//     const priceRemove=(item)=>{
+//    dispatch(RemoveCart(item))
+//     }
     return (
         <>
           <Navbar/>
@@ -33,8 +40,18 @@ const Cart = () => {
 
                                     />
                                     <Text className='font' style={{marginTop:'30px',color:"rgb(149, 165, 166)"}} fontSize={30}>{e.title.slice(0,40)}</Text>
-                                    <Text className='font' style={{marginTop:'30px'}} fontSize={30} fontWeight={700}>${e.price}</Text>
+                                    <Text className='font' style={{marginTop:'30px'}} fontSize={30} fontWeight={700}>
+                                  ${e.qty * e.price}
+                                    </Text>
+                                    {/* {e.qty} X ${e.price} =  */}
+                                    {/* ${e.price} */}
+                                    
+                                    <Button onClick={()=>priceAdd(e)} style={{marginTop:'30px',marginRight:"15px"}} >+</Button>
+                                    <Button  onClick={()=>{
+                                        Cartfn(e)
+                                    }} style={{marginTop:'30px',marginRight:"15px"}} >-</Button>
                                     <Text className='font' style={{marginTop:'30px',display:"flex"}} fontSize={30}><FaStar style={{color:'#fbc531',marginTop:"5px"}} />&nbsp;<span>{e.rating.rate}</span></Text>
+                                   
                                     {/* dispatch(RemoveCart(e)) */}
                                     <Button className='font' style={{marginTop:'30px',marginRight:"15px"}} onClick={()=>{
                                         Cartfn(e)

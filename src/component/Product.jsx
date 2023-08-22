@@ -9,7 +9,6 @@ import ProductButton from './ProductButton'
 import CartData from '../Redux/Action/Cart'
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
-import Inc from '../Redux/Action/IncCount'
 const Product = () => {
     const dispatch=useDispatch()
     useEffect(()=>{
@@ -25,14 +24,14 @@ const Product = () => {
       return storeData.ApiData
   })
   const CartFn=(e)=>{
-     dispatch(CartData(e))
-     dispatch(Inc(1))
+     dispatch(CartData(e,1))
+    //  dispatch(Inc(1))
   }
   return (
     <>
     <Navbar/>
     <Box style={{height:"100%",marginTop:"100px"}} >
-        <Box>
+        <Box style={{width:"90%"}}>
            <ProductButton/>
         </Box>
         <Box className='container'>

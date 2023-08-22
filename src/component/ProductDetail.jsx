@@ -9,7 +9,6 @@ import { useParams,useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import Navbar from './Navbar'
 import CartData from '../Redux/Action/Cart';
-import Inc from '../Redux/Action/IncCount';
 const ProductDetail = () => {
   const navigate=useNavigate()
     const {id}=useParams()
@@ -24,8 +23,8 @@ const ProductDetail = () => {
    })
     },[])
 const CartItem=(e)=>{
-   dispatch(CartData(e))
-   dispatch(Inc(1))
+   dispatch(CartData(e,1))
+  
 }
     
   return (
