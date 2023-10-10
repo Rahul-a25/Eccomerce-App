@@ -27,8 +27,8 @@ const Navbar = () => {
                     {/* <Button width={200} variant='outline'rightIcon={<BiCart />} > <Link className='link' to='/cart'>Cart</Link></Button> */}
                 <Box className='last' >
                 <NavLink className='link' to='/cart'> <Button width={200} variant='outline'leftIcon={< BsCartFill />}> <span style={{fontSize:"20px"}}>{CountData}</span> </Button></NavLink>
-                
-                  
+                <NavLink className='link' to='/login'><Button width={200} variant='outline'>Login </Button></NavLink>
+                <NavLink className='sign-up' to='/signup'><Button width={100} variant='outline'>SignUp </Button></NavLink>   
                 </Box>
                 </Box>
             </Box>

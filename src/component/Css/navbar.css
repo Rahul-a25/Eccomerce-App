@@ -37,8 +37,10 @@
 
 .last{
     /* margin-right: 50px; */
-   
-    width: 200px;
+     display: flex;
+     width: 400px;
+     justify-content: space-around;
+
 
 }
 .last .link {
@@ -51,8 +53,7 @@
 .last .link button{
     font-size: 20px;
     width: 70px;
-
-    margin-left: 50px;
+    
 }
 .link{
     font-size: 27px;
@@ -64,4 +65,9 @@ font-family: 'Kalam', cursive;
 font-family: 'Monoton', cursive;
 font-family: 'Varela Round', sans-serif;
 
+}
+.sign-up{
+    font-size: 20px;
+    width: 100px;
+    
 }

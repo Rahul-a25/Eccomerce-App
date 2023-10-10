@@ -5,7 +5,15 @@ const initial={
     ApiData:[],
     FilterData:[],
     CartData:[],
-    Count:0
+    Count:0,
+    LoggedIn:false,
+    Form:{
+      Username:'',
+      Email:'',
+      FullName:'',
+      Password:''
+
+    }
 }
 const MyReducer=(state=initial,action)=>{
     switch (action.type){
@@ -139,6 +147,65 @@ const MyReducer=(state=initial,action)=>{
               ApiData:state.FilterData.filter((e)=>e.title.toLowerCase().includes(action.payload))
             }
             break;
+            case 'condition':
+                state={
+                  ...state,
+                  LoggedIn:action.payload
+                }
+                break;
+                case 'formUsername':
+                state={
+                  ...state,
+                  Form:{
+                    ...state.Form,
+                    [action.name]:action.payload,
+                    // fullname:action.payload,
+                    // email:action.payload,
+                    // password:action.payload
+
+                  }
+                }
+                break;
+                case 'formFullname':
+                state={
+                  ...state,
+                  Form:{
+                    ...state.Form,
+                    [action.name]:action.payload,
+                    // fullname:action.payload,
+                    // email:action.payload,
+                    // password:action.payload
+
+                  }
+                }
+                break;
+                case 'formEmail':
+                state={
+                  ...state,
+                  Form:{
+                    ...state.Form,
+                    [action.name]:action.payload,
+                    // fullname:action.payload,
+                    // email:action.payload,
+                    // password:action.payload
+
+                  }
+                }
+                break;
+                case 'formPassword':
+                state={
+                  ...state,
+                  Form:{
+                    ...state.Form,
+                    [action.name]:action.payload,
+                    // fullname:action.payload,
+                    // email:action.payload,
+                    // password:action.payload
+
+                  }
+                }
+                break;
+
     }
   return state
 }
